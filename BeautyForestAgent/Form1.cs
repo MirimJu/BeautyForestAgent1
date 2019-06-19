@@ -16,6 +16,37 @@ namespace BeautyForestAgent
             InitializeComponent();
         }
 
-      
+        private void visibleChange(bool visble)
+        {
+            this.Visible = visble;
+            this.ntyTray.Visible = !visble;
+        }
+
+        private void BtnTray_Click(object sender, EventArgs e)
+        {
+            visibleChange(false);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            visibleChange(false);
+        }
+
+        private void 폼보이기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            visibleChange(true);
+        }
+
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ntyTray.Visible = false;
+            Application.ExitThread();
+        }
+
+        private void NtyTray_DoubleClick(object sender, EventArgs e)
+        {
+            visibleChange(true);
+        }
     }
 }
